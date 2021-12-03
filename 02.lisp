@@ -1,4 +1,6 @@
-(defparameter +in+ (mapcar (lambda (s) (cl-ppcre:split "\\ " s)) (uiop:read-file-lines "02.in")))
+(load "aoc")
+
+(defparameter +in+ (mapcar #'aoc:str-split (uiop:read-file-lines "02.in")))
 (defparameter +directions+ (pairlis '("up" "down") '(- +)))
 
 ;;; Solutions

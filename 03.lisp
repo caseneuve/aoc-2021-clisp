@@ -2,7 +2,7 @@
 
 (defparameter +in+ (mapcar #'aoc:str->ints (uiop:read-file-lines "03.in")))
 
-;;; COMMONS
+;; Commons
 (defun rotate (xs)
   (apply #'mapcar #'list xs))
 
@@ -21,7 +21,7 @@
 (defun solution1 (data)
   (multiply-bins (rotate (mapcar (lambda (l) (most-least l data)) (rotate data)))))
 
-(solution1 +in+) ; => 4118544
+(solution1 +in+)                        ; => 4118544
 
 ;; II
 (defun get-rating (ll &key (pos 0) subs)
@@ -37,9 +37,9 @@
 (defun solution2 (data)
   (multiply-bins (loop for s in '(oxygen co2) collect (get-rating data :subs s))))
 
-(solution2 +in+) ; => 3832770
+(solution2 +in+)                        ; => 3832770
 
-;;; TESTS
+;; Tests
 (ql:quickload :lisp-unit)
 (use-package :lisp-unit)
 
@@ -49,4 +49,5 @@
                          "00111" "11100" "10000" "11001" "00010" "01010"))))
     (assert-equal 198 (solution1 input))
     (assert-equal 230 (solution2 input))))
+
 (run-tests '(day03))
