@@ -16,6 +16,6 @@ The code in =dayNN.lisp= files is written with assumption that it's being evalua
 
 | puzzle | notes                              |
 |--------+------------------------------------|
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/day01.lisp][Day 1]]  | =reduce= (would be better with =loop=) |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/day02.lisp][Day 2]]  | loop with accumulating values      |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/day03.lisp][Day 3]]  | rotating list and recursion        |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/01.lisp][Day 1]]  | =reduce= (would be better with =loop=) |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/02.lisp][Day 2]]  | loop with accumulating values      |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/03.lisp][Day 3]]  | rotating list and recursion        |
