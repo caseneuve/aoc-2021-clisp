@@ -32,7 +32,6 @@
                                   :direction :output
                                   :if-exists nil
                                   :if-does-not-exist :create)
-            ;; (format stream body)
             (if stream
                 (progn
                   (print status)
