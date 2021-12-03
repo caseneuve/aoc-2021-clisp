@@ -1,5 +1,9 @@
 #+title: Advent of Code 2021 in Common Lisp
 
+* Disclaimer
+
+It's a learning project, so the solutions may be lacking some mastery.
+
 * Prerequisites
 
 Evaluation of the code assumes =sbcl= and =quicklisp= installed and available.
