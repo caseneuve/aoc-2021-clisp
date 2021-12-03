@@ -1,0 +1,21 @@
+#+title: Advent of Code 2021 in Common Lisp
+
+* Prerequisites
+
+Evaluation of the code assumes =sbcl= and =quicklisp= installed and available.
+
+To use =get_puzzle= script, file =env.lisp= must be created with contents like:
+
+#+begin_example lisp
+(defconstant *token* "your-aoc-session-cookie")
+#+end_example
+
+The code in =dayNN.lisp= files is written with assumption that it's being evaluated in Emacs with =sly= connection.
+
+* Solutions
+
+| puzzle | notes                              |
+|--------+------------------------------------|
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/day01.lisp][Day 1]]  | =reduce= (would be better with =loop=) |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/day02.lisp][Day 2]]  | loop with accumulating values      |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/day03.lisp][Day 3]]  | rotating list and recursion        |
