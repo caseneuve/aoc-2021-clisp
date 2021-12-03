@@ -17,5 +17,5 @@
 
 (defmacro solve (s1 s2)
   (let ((sep "------------------"))
-    `(format t "~a~% part 1: ~a~%~a~% part 2: ~a~%~a~%"
+    `(format t ";~a~%; part 1: ~a~%;~a~%; part 2: ~a~%;~a~%"
                ,sep (time ,s1) ,sep (time ,s2) ,sep)))
