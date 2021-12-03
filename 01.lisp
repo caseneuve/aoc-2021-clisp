@@ -1,6 +1,7 @@
-(defparameter +in+ (mapcar 'parse-integer (uiop:read-file-lines "01.in")))
+(load "aoc")
+(defparameter +in1+ (mapcar 'parse-integer (uiop:read-file-lines "01.in")))
 
-;;; Tools
+;; Tools
 (defun sum-seq> (&rest xs)
   (apply #'> (mapcar (lambda (s) (apply #'+ s)) xs)))
 
@@ -9,7 +10,7 @@
     (let ((new (append (rest old) el)))
       (list new (push (sum-seq> new old) acc)))))
 
-(defun compare-elements (n &optional (seq +in+))
+(defun compare-elements (n &optional (seq +in1+))
   (count 't
          (cadr
           (reduce #'reductor
@@ -18,11 +19,12 @@
                   :key #'list))))
 
 ;;; Solutions
-(compare-elements 1)                    ; => 1482
-(compare-elements 3)                    ; => 1518
+(aoc:solve
+ (compare-elements 1)
+ (compare-elements 3)
+ )
 
-;;; Tests
-(ql:quickload :lisp-unit)
+;; Tests
 (use-package  :lisp-unit)
 
 (define-test day01

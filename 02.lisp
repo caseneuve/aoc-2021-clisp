@@ -1,27 +1,24 @@
 (load "aoc")
 
-(defparameter +in+ (mapcar #'aoc:str-split (uiop:read-file-lines "02.in")))
-(defparameter +directions+ (pairlis '("up" "down") '(- +)))
+(defparameter +in2+ (mapcar #'aoc:str-split (uiop:read-file-lines "02.in")))
 
 ;;; Solutions
 (defun solution (input &key (fwd 0) (dep 0) aim)
-  (loop for (dir input-value) in input
-        for val = (parse-integer input-value)
-        for op = (cdr (assoc dir +directions+ :test #'string=))
-        if (string= dir "forward") do
-          (setf fwd (+ fwd val))
-          (when aim (setf dep (+ dep (* aim val))))
-        else do
-          (if aim
-              (setf aim (funcall op aim val))
-              (setf dep (funcall op dep val))))
+  (loop for (sdir sval) in input
+        for dir = (read-from-string sdir)
+        for val = (parse-integer sval)
+        do (case dir
+             (forward (incf fwd val) (when aim (incf dep (* aim val))))
+             (up (if aim (decf aim val) (decf dep val)))
+             (down (if aim (incf aim val) (incf dep val)))))
   (* fwd dep))
 
-(solution +in+)                              ; => 1488669
-(solution +in+ :aim 0)                       ; => 1176514794
+(aoc:solve
+ (solution +in2+)        ; => 1488669
+ (solution +in2+ :aim 0) ; => 1176514794
+ )
 
-;;; Tests
-(ql:quickload :lisp-unit)
+;; Tests
 (use-package :lisp-unit)
 
 (define-test day02

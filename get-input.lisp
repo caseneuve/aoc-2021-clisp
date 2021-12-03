@@ -1,6 +1,6 @@
 #!/usr/bin/sbcl --script
 
-(load "/usr/lib/quicklisp/setup.lisp")
+(load "~/.quicklisp/setup.lisp")
 
 (ql:quickload :drakma)
 (ql:quickload :local-time)
