@@ -8,7 +8,7 @@ It's a learning project, so the solutions may be lacking some mastery.
 
 Evaluation of the code assumes =sbcl= and =quicklisp= installed and available.
 
-To use =get_puzzle= script, file =env.lisp= must be created with contents like:
+To use =get_input= script, file =env.lisp= must be created with contents like:
 
 #+begin_example lisp
 (defconstant *token* "your-aoc-session-cookie")
