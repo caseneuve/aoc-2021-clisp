@@ -22,44 +22,23 @@
 (defun calculate-score (n board)
   (* n (apply #'+ (remove-if-not #'numberp (apply #'append board)))))
 
-;; Solutions
-(defun game1 (nums boards &key score)
-  (if score score
-      (game1
+;; Solution
+(defun game (nums boards &optional (scores (list)))
+  (if (not nums) (reverse scores)
+      (game
        (cdr nums)
        (loop named round
              with n = (car nums)
              for board in boards
              for this = (update-board n board)
-             if (won? this) do
-               (setf score (calculate-score n this))
-               (return-from round this)
+             if (won? this) do (push (calculate-score n this) scores)
              else collect this)
-       :score score)))
+       scores)))
 
-(defun game2 (nums boards &key score)
-  (if (not nums) score
-      (game2
-       (cdr nums)
-       (loop named round
-             with n = (car nums)
-             for board in boards
-             for this = (update-board n board)
-             if (won? this) do
-               (setf score (calculate-score n this))
-             else collect this)
-       :score score)))
-
-;; Results
 (multiple-value-bind (numbers boards) (parse-input +day4+)
   (aoc:solve
-   (game1 numbers boards)
-   (game2 numbers boards)))
-;------------------
-; part 1: 23177
-;------------------
-; part 2: 6804
-;------------------
+   (first (game numbers boards))
+   (car (last (game numbers boards)))))
 
 ;; Tests
 (use-package :lisp-unit)
