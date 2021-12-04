@@ -65,7 +65,7 @@
            "22 11 13  6  5"
            "2  0 12  3  7")))
     (multiple-value-bind (numbers boards) (parse-input input)
-      (assert-equal 4512 (game1 numbers boards))
-      (assert-equal 1924 (game2 numbers boards)))))
+      (assert-equal 4512 (first (game numbers boards)))
+      (assert-equal 1924 (car (last (game numbers boards)))))))
 
 (run-tests '(day04))
