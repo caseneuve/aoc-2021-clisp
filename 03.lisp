@@ -1,6 +1,6 @@
 (load "aoc")
 
-(defparameter +in3+ (mapcar #'aoc:str->ints (uiop:read-file-lines "03.in")))
+(defparameter +in3+ (mapcar #'aoc:str->digits (uiop:read-file-lines "03.in")))
 
 ;; Commons
 (defun rotate (xs)
@@ -44,7 +44,7 @@
 (use-package :lisp-unit)
 
 (define-test day03
-  (let ((input (mapcar #'aoc:str->ints
+  (let ((input (mapcar #'aoc:str->digits
                        '("00100" "11110" "10110" "10111" "10101" "01111"
                          "00111" "11100" "10000" "11001" "00010" "01010"))))
     (assert-equal 198 (solution1 input))

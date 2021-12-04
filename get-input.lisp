@@ -34,7 +34,6 @@
                                   :if-does-not-exist :create)
             (if stream
                 (progn
-                  (print status)
                   (format stream body)
                   (format t "Saved ~A~%" file))
                 (format t "~A already exists!~%" file)))
