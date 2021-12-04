@@ -25,7 +25,7 @@
 (defun get-rating (ll &key (pos 0) subs)
   (if (cdr ll)
       (let ((bit (funcall subs (most-least (nth pos (rotate ll)) ll))))
-        (get-rating (remove-if (lambda (l) (not (= (nth pos l) bit))) ll)
+        (get-rating (remove-if-not (lambda (l) (= (nth pos l) bit)) ll)
                     :pos (incf pos) :subs subs))
       (first ll)))
 
