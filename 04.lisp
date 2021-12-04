@@ -27,8 +27,7 @@
   (if (not nums) (reverse scores)
       (game
        (cdr nums)
-       (loop named round
-             with n = (car nums)
+       (loop with n = (car nums)
              for board in boards
              for this = (update-board n board)
              if (won? this) do (push (calculate-score n this) scores)
