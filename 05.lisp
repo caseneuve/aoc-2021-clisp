@@ -16,12 +16,12 @@
 
 (defun mark-vertical (x1 x2 y1 diagram)
   (loop with row = (nth y1 diagram)
-        for n from (min x1 x2) to (max x1 x2)
-        do (incf (nth n row))))
+        for x from (min x1 x2) to (max x1 x2)
+        do (incf (nth x row))))
 
 (defun mark-horizontal (x1 y1 y2 diagram)
-  (loop for n from (min y1 y2) to (max y1 y2)
-        for row = (nth n diagram)
+  (loop for y from (min y1 y2) to (max y1 y2)
+        for row = (nth y diagram)
         do (incf (nth x1 row))))
 
 (defun mark-diagonal (x1 x2 y1 y2 diagram)
@@ -41,7 +41,7 @@
     finally           (return diagram)))
 
 (defun count-overlapping-lines (diagram)
-  (length (remove-if (lambda (e) (< e 2)) (apply #'append diagram))))
+  (length (remove-if (lambda (n) (< n 2)) (apply #'append diagram))))
 
 ;; Solution
 (multiple-value-bind (coordinates maxx maxy) (parse-input +day5+)
