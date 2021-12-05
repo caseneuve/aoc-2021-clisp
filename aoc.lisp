@@ -29,9 +29,10 @@
 (defun str->ints (s)
   (mapcar #'parse-integer (all-matches-as-strings "\\d+" s)))
 
-(defun str-split (s &key (by " "))
+(defun str-split (str &key (by " "))
   (let ((by (concatenate 'string "\\" by)))
-    (split by (string-trim '(#\space #\newline) s))))
+    (mapcar (lambda (s) (string-trim '(#\space) s))
+            (split by (string-trim '(#\space) str)))))
 
 ;; List ops
 (defun rotate (lol) (apply #'mapcar #'list lol))
@@ -64,6 +65,10 @@
 (define-test str->ints
   (assert-equal '(1 88 9) (str->ints " 1  88 09 "))
   (assert-equal '(1 88 9) (str->ints "1 some text 88,09.")))
+
+(define-test str-split
+  (assert-equal '("part1" "part2") (str-split " part1 part2 "))
+  (assert-equal '("part1" "part2") (str-split "part1  part3  part2" :by "part3")))
 
 (define-test partition-by
   (assert-equal '((a b) (c) (1 2 3))

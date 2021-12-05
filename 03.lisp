@@ -3,9 +3,6 @@
 (defparameter +in3+ (mapcar #'aoc:str->digits (uiop:read-file-lines "03.in")))
 
 ;; Commons
-(defun rotate (xs)
-  (apply #'mapcar #'list xs))
-
 (defun most-least (xs ll)
   (let ((len (length ll)))
     (loop for n in '(1 0) for c = (count n xs)
@@ -19,12 +16,12 @@
 
 ;; I
 (defun solution1 (data)
-  (multiply-bins (rotate (mapcar (lambda (l) (most-least l data)) (rotate data)))))
+  (multiply-bins (aoc:rotate (mapcar (lambda (l) (most-least l data)) (aoc:rotate data)))))
 
 ;; II
 (defun get-rating (ll &key (pos 0) subs)
   (if (cdr ll)
-      (let ((bit (funcall subs (most-least (nth pos (rotate ll)) ll))))
+      (let ((bit (funcall subs (most-least (nth pos (aoc:rotate ll)) ll))))
         (get-rating (remove-if-not (lambda (l) (= (nth pos l) bit)) ll)
                     :pos (incf pos) :subs subs))
       (first ll)))
