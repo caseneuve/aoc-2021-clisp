@@ -2,6 +2,7 @@
 
 (defparameter +day5+ (mapcar #'aoc:str->ints (uiop:read-file-lines "05.in")))
 
+;; Helpers
 (defun parse-input (input)
   (loop with maxx = 0
         with maxy = 0
@@ -42,6 +43,7 @@
 (defun count-overlapping-lines (diagram)
   (length (remove-if (lambda (e) (< e 2)) (apply #'append diagram))))
 
+;; Solution
 (multiple-value-bind (coordinates maxx maxy) (parse-input +day5+)
   (aoc:solve
    (count-overlapping-lines (update-diagram coordinates (make-diagram maxx maxy)))
