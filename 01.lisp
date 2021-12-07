@@ -1,5 +1,8 @@
+;; --- Day 1: Sonar Sweep ---
+
 (load "aoc")
-(defparameter +in1+ (mapcar 'parse-integer (uiop:read-file-lines "01.in")))
+
+(defparameter +day1+ (mapcar 'parse-integer (uiop:read-file-lines "01.in")))
 
 ;; Tools
 (defun sum-seq> (&rest xs)
@@ -10,7 +13,7 @@
     (let ((new (append (rest old) el)))
       (list new (push (sum-seq> new old) acc)))))
 
-(defun compare-elements (n &optional (seq +in1+))
+(defun compare-elements (n &optional (seq +day1+))
   (count 't
          (cadr
           (reduce #'reductor
@@ -21,15 +24,14 @@
 ;;; Solutions
 (aoc:solve
  (compare-elements 1)
- (compare-elements 3)
- )
+ (compare-elements 3))
 
 ;; Tests
-(use-package  :lisp-unit)
+(use-package :lisp-unit)
 
-(define-test day01
+(define-test day1
   (let ((input '(199 200 208 210 200 207 240 269 260 263)))
     (assert-equal 7 (compare-elements 1 input))
     (assert-equal 5 (compare-elements 3 input))))
 
-(run-tests '(day01))
+(run-tests '(day1))

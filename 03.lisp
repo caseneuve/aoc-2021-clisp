@@ -1,6 +1,8 @@
+;; --- Day 3: Binary Diagnostic ---
+
 (load "aoc")
 
-(defparameter +in3+ (mapcar #'aoc:str->digits (uiop:read-file-lines "03.in")))
+(defparameter +day3+ (mapcar #'aoc:str->digits (uiop:read-file-lines "03.in")))
 
 ;; Commons
 (defun most-least (xs ll)
@@ -33,18 +35,17 @@
   (multiply-bins (loop for s in '(oxygen co2) collect (get-rating data :subs s))))
 
 (aoc:solve
- (solution1 +in3+) ; => 4118544
- (solution2 +in3+) ; => 3832770
- )
+ (solution1 +day3+)
+ (solution2 +day3+))
 
 ;; Tests
 (use-package :lisp-unit)
 
-(define-test day03
+(define-test day3
   (let ((input (mapcar #'aoc:str->digits
                        '("00100" "11110" "10110" "10111" "10101" "01111"
                          "00111" "11100" "10000" "11001" "00010" "01010"))))
     (assert-equal 198 (solution1 input))
     (assert-equal 230 (solution2 input))))
 
-(run-tests '(day03))
+(run-tests '(day3))

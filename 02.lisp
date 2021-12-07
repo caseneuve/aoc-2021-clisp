@@ -1,6 +1,8 @@
+;; --- Day 2: Dive! ---
+
 (load "aoc")
 
-(defparameter +in2+ (mapcar #'aoc:str-split (uiop:read-file-lines "02.in")))
+(defparameter +day2+ (mapcar #'aoc:str-split (uiop:read-file-lines "02.in")))
 
 ;;; Solutions
 (defun solution (input &key (fwd 0) (dep 0) aim)
@@ -14,14 +16,13 @@
   (* fwd dep))
 
 (aoc:solve
- (solution +in2+)        ; => 1488669
- (solution +in2+ :aim 0) ; => 1176514794
- )
+ (solution +day2+)
+ (solution +day2+ :aim 0))
 
 ;; Tests
 (use-package :lisp-unit)
 
-(define-test day02
+(define-test day2
   (let ((input '(("forward" "5")
                  ("down" "5")
                  ("forward" "8")
@@ -31,4 +32,4 @@
     (assert-equal 150 (solution input))
     (assert-equal 900 (solution input :aim 0))))
 
-(run-tests '(day02))
+(run-tests '(day2))
