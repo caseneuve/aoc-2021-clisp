@@ -15,6 +15,7 @@
    :str->digits
    :str->ints
    :str-split
+   :str->charlist
    ))
 
 (in-package :aoc)
@@ -29,10 +30,14 @@
 (defun str->ints (s)
   (mapcar #'parse-integer (all-matches-as-strings "\\d+" s)))
 
+
 (defun str-split (str &key (by " "))
   (let ((by (concatenate 'string "\\" by)))
     (mapcar (lambda (s) (string-trim '(#\space) s))
             (split by (string-trim '(#\space) str)))))
+
+(defun str->charlist (s)
+  (mapcar (lambda (e) (coerce e 'list)) (aoc:str-split s)))
 
 ;; List ops
 (defun rotate (lol) (apply #'mapcar #'list lol))
@@ -69,6 +74,10 @@
 (define-test str-split
   (assert-equal '("part1" "part2") (str-split " part1 part2 "))
   (assert-equal '("part1" "part2") (str-split "part1  part3  part2" :by "part3")))
+
+(define-test str->charlist
+  (assert-equal '((#\a #\b #\c)) (str->charlist "abc"))
+  (assert-equal '((#\a #\b #\c) (#\d #\e #\f)) (str->charlist "abc def")))
 
 (define-test partition-by
   (assert-equal '((a b) (c) (1 2 3))
