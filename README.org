@@ -28,3 +28,4 @@ The code in =dayNN.lisp= files is written with assumption that it's being evalua
 | [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/06.lisp][Day 6]]  | more thinking than writing                              |
 | [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/07.lisp][Day 7]]  | iteration + arithmetic                                  |
 | [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/08.lisp][Day 8]]  | sets                                                    |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/09.lisp][Day 9]]  | maze: flood-fill algo, =flet= & =labels=                    |
