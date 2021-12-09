@@ -10,16 +10,16 @@
 (defun adjacent-pos (x y mx my)
   (flet ((→ (z fns) (mapcar (lambda (f) (funcall f z)) fns)))
     (flet ((⇒ (xfns yfns) (mapcar #'list (→ x xfns) (→ y yfns))))
-      (cond ((and (= x 0)  (= y 0))           (⇒ '(1+ *)      '(* 1+)))         ; upper left corner
-            ((and (= x mx) (= y 0))           (⇒ '(1- *)      '(* 1+)))         ; upper right corner
-            ((and (= x 0)  (= y my))          (⇒ '(1+ *)      '(* 1-)))         ; lower left corner
-            ((and (= x mx) (= y my))          (⇒ '(1- *)      '(* 1-)))         ; lower right corner
-            ((and (> x 0)  (< x mx) (= y 0))  (⇒ '(1- * 1+)   '(* 1+ *)))       ; upper border
-            ((and (> x 0)  (< x mx) (= y my)) (⇒ '(1- * 1+)   '(* 1- *)))       ; lower border
-            ((= x 0)                          (⇒ '(1+ * *)    '(* 1+ 1-)))      ; left border
-            ((= x mx)                         (⇒ '(1- * *)    '(* 1+ 1-)))      ; right border
-            (t                                (⇒ '(1- * 1+ *) '(* 1- * 1+)))))) ; inner tiles
-  )
+      (cond ((and (= x 0)  (= y 0))           (⇒ '(1+ *)      '(* 1+)))      ; upper left corner
+            ((and (= x mx) (= y 0))           (⇒ '(1- *)      '(* 1+)))      ; upper right corner
+            ((and (= x 0)  (= y my))          (⇒ '(1+ *)      '(* 1-)))      ; lower left corner
+            ((and (= x mx) (= y my))          (⇒ '(1- *)      '(* 1-)))      ; lower right corner
+            ((and (> x 0)  (< x mx) (= y 0))  (⇒ '(1- * 1+)   '(* 1+ *)))    ; upper border
+            ((and (> x 0)  (< x mx) (= y my)) (⇒ '(1- * 1+)   '(* 1- *)))    ; lower border
+            ((= x 0)                          (⇒ '(1+ * *)    '(* 1+ 1-)))   ; left border
+            ((= x mx)                         (⇒ '(1- * *)    '(* 1+ 1-)))   ; right border
+            (t                                (⇒ '(1- * 1+ *) '(* 1- * 1+))) ; inner tiles
+            ))))
 
 (defun part1 (input)
   (let ((mx (1- (length (car input))))
