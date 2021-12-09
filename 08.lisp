@@ -10,7 +10,7 @@
 
 ;;; Part I
 (defun count-unique (numbers)
-  (length (remove-if-not (lambda (n) (member (length n) '(2 3 4 7))) (apply #'append numbers))))
+  (count-if (lambda (n) (member (length n) '(2 3 4 7))) (apply #'append numbers)))
 
 ;;; Part II
 (defun filter-by-len (lst len) (remove-if-not (lambda (e) (= (length e) len)) lst))
