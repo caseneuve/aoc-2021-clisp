@@ -22,8 +22,8 @@
   )
 
 (defun part1 (input)
-  (let* ((mx (1- (length (car input))))
-         (my (1- (length input))))
+  (let ((mx (1- (length (car input))))
+        (my (1- (length input))))
     (flet ((adjacent-values (tx ty)
              (loop for (lx ly) in (adjacent-pos tx ty mx my)
                    collect (nth lx (nth ly input)))))
