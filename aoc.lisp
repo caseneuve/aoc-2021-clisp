@@ -12,10 +12,11 @@
    :partition-by
    :rotate
    :solve
+   :str->charlist
    :str->digits
    :str->ints
+   :str->list
    :str-split
-   :str->charlist
    ))
 
 (in-package :aoc)
