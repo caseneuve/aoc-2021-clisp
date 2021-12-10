@@ -8,17 +8,17 @@
 
 ;; Part I
 (defun adjacent-pos (x y mx my)
-  (flet ((→ (z fns) (mapcar (lambda (f) (funcall f z)) fns)))
+  (flet ((→ (z deltas) (mapcar (lambda (n) (+ n z)) deltas)))
     (flet ((⇒ (xfns yfns) (mapcar #'list (→ x xfns) (→ y yfns))))
-      (cond ((and (= x 0)  (= y 0))           (⇒ '(1+ *)      '(* 1+)))      ; upper left corner
-            ((and (= x mx) (= y 0))           (⇒ '(1- *)      '(* 1+)))      ; upper right corner
-            ((and (= x 0)  (= y my))          (⇒ '(1+ *)      '(* 1-)))      ; lower left corner
-            ((and (= x mx) (= y my))          (⇒ '(1- *)      '(* 1-)))      ; lower right corner
-            ((and (> x 0)  (< x mx) (= y 0))  (⇒ '(1- * 1+)   '(* 1+ *)))    ; upper border
-            ((and (> x 0)  (< x mx) (= y my)) (⇒ '(1- * 1+)   '(* 1- *)))    ; lower border
-            ((= x 0)                          (⇒ '(1+ * *)    '(* 1+ 1-)))   ; left border
-            ((= x mx)                         (⇒ '(1- * *)    '(* 1+ 1-)))   ; right border
-            (t                                (⇒ '(1- * 1+ *) '(* 1- * 1+))) ; inner tiles
+      (cond ((and (= x  0) (= y  0)         ) (⇒ '( 1 0    ) '(0  1    )))  ; upper left corner
+            ((and (= x mx) (= y  0)         ) (⇒ '(-1 0    ) '(0  1    )))  ; upper right corner
+            ((and (= x  0) (= y my)         ) (⇒ '( 1 0    ) '(0 -1    )))  ; lower left corner
+            ((and (= x mx) (= y my)         ) (⇒ '(-1 0    ) '(0 -1    )))  ; lower right corner
+            ((and (> x  0) (< x mx) (= y  0)) (⇒ '(-1 0 1  ) '(0  1  0 )))  ; upper border
+            ((and (> x  0) (< x mx) (= y my)) (⇒ '(-1 0 1  ) '(0 -1  0 )))  ; lower border
+            ((= x 0                         ) (⇒ '( 1 0 0  ) '(0  1 -1 )))  ; left border
+            ((= x mx                        ) (⇒ '(-1 0 0  ) '(0  1 -1 )))  ; right border
+            (t                                (⇒ '(-1 0 1 0) '(0 -1  0 1))) ; inner tiles
             ))))
 
 (defun part1 (input)
@@ -47,8 +47,8 @@
     (length basin)))
 
 (defun part2 (input)
-  (let* ((mx (1- (length (car input))))
-         (my (1- (length input))))
+  (let ((mx (1- (length (car input))))
+        (my (1- (length input))))
     (loop for y from 0 to my
           collect (loop for x from 0 to mx collect (flood-fill input x y mx my)) into areas
           finally (return (apply #'* (subseq (sort (apply #'append areas) #'>) 0 3))))))
