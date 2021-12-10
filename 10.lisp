@@ -27,14 +27,10 @@
 ;; II
 (defun calculate-incomplete (lines)
   (let ((sorted-scores
-          (loop for line in lines
-                collect
-                (loop for points in line
-                      with total = 0
-                      do (setf total (+ (* 5 total) points))
-                      finally (return total))
-                  into sums
-                finally (return (sort sums #'<)))))
+          (sort
+           (loop for line in lines
+                 collect (reduce (lambda (sum points) (+ (* 5 sum) points)) line))
+           #'<)))
     (nth (floor (/ (length sorted-scores) 2)) sorted-scores)))
 
 ;; Solution
