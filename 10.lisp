@@ -18,14 +18,14 @@
   (cdr (assoc bracket (if (eq type :corrupted) corrupted incomplete) :test #'string=)))
 
 ;; I
-(defun score-corrupted (scores)
+(defun calculate-corrupted (scores)
   (loop for score in (remove-duplicates scores)
         with sum = 0
         do (incf sum (* (count score scores) score))
         finally (return sum)))
 
 ;; II
-(defun score-incomplete (lines)
+(defun calculate-incomplete (lines)
   (let ((sorted-scores
           (loop for line in lines
                 collect
@@ -51,7 +51,7 @@
           into points
         finally (return
                   (funcall
-                   (if (eq type :corrupted) #'score-corrupted #'score-incomplete)
+                   (if (eq type :corrupted) #'calculate-corrupted #'calculate-incomplete)
                    (remove-if #'null points)))))
 
 (aoc:solve
