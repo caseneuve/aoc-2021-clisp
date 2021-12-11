@@ -6,17 +6,20 @@
 (defpackage :aoc
   (:use :cl)
   (:import-from :cl-ppcre
-   :all-matches-as-strings
-   :split)
+   #:all-matches-as-strings
+   #:split)
   (:export
-   :partition-by
-   :rotate
-   :solve
-   :str->charlist
-   :str->digits
-   :str->ints
-   :str->list
-   :str-split
+   #:coordinates
+   #:partition-by
+   #:print-hashmap
+   #:product
+   #:rotate
+   #:solve
+   #:str->charlist
+   #:str->digits
+   #:str->ints
+   #:str->list
+   #:str-split
    ))
 
 (in-package :aoc)
@@ -53,11 +56,23 @@
           (push (funcall (or transform #'identity) row) sublst)
         finally (return (append coll (list (nreverse sublst))))))
 
+(defun product (lst1 &optional lst2)
+  (loop for y in lst1 nconc (loop for x in (or lst2 lst2) collect (list x y))))
+
+;; Hashmap ops
+(defun print-hashmap (hm) (maphash (lambda (k v) (format t "~a: ~a~%" k v)) hm))
+
+;; AoC specific
+(defun coordinates (mx my)
+  "Return list of pairs (x y) for grid from 0 to MX on X axis and from 0
+too MY on Y axis.  It's carthesian product of range 0 MX and range 0 MY."
+  (loop for y from 0 to mx nconc (loop for x from 0 to my collect (list x y))))
+
 ;; Macros
 (defmacro solve (s1 s2)
   (let ((sep "------------------"))
     `(format t ";~a~%; part 1: ~a~%;~a~%; part 2: ~a~%;~a~%"
-               ,sep (time ,s1) ,sep (time ,s2) ,sep)))
+             ,sep (time ,s1) ,sep (time ,s2) ,sep)))
 
 ;; Tests
 (use-package :lisp-unit)
