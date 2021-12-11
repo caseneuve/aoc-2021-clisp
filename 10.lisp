@@ -1,5 +1,10 @@
 ;; --- Day 10: Syntax Scoring ---
 
+(defpackage day10
+  (:use :cl)
+  (:export #:calculate-incomplete))
+
+(in-package day10)
 (load "aoc")
 
 ;; Helpers
@@ -26,11 +31,9 @@
 
 ;; II
 (defun calculate-incomplete (lines)
-  (let ((sorted-scores
-          (sort
-           (loop for line in lines
-                 collect (reduce (lambda (sum points) (+ (* 5 sum) points)) line))
-           #'<)))
+  (let* ((scores (loop for line in lines
+                       collect (reduce (lambda (sum points) (+ (* 5 sum) points)) line)))
+         (sorted-scores (sort scores #'<)))
     (nth (floor (/ (length sorted-scores) 2)) sorted-scores)))
 
 ;; Solution
