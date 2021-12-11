@@ -37,7 +37,7 @@
 
 ;; Part II
 (defun flood-fill (cave xx yy mx my)
-  (let ((basin (list)))
+  (let ((basin ()))
     (labels
         ((walk (x y)
            (unless (member (nth x (nth y cave)) '(9 :visited))

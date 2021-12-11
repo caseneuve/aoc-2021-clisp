@@ -30,3 +30,4 @@ The code in =dayNN.lisp= files is written with assumption that it's being evalua
 | [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/08.lisp][Day 8]]  | sets                                                    |
 | [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/09.lisp][Day 9]]  | maze: flood-fill algo, =flet= & =labels=                    |
 | [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/10.lisp][Day 10]] | queueing                                                |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/11.lisp][Day 11]] | cf. day 9 (improved with hashmap and =#'coordinates=)     |

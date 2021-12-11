@@ -51,8 +51,8 @@
 (defun solution (raw-input)
   (multiple-value-bind (gr mx my coords) (parse-input raw-input)
     (loop for step from 1
-          with flashes = (list)
-          with simoultaneous = (list)
+          with flashes = ()
+          with simoultaneous = ()
           while (= (length simoultaneous) 0)
           do (powerup! gr coords)
              (push (apply #'+ (loop for xy in coords collect (flash! gr xy coords))) flashes)
