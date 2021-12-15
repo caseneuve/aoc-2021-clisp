@@ -30,7 +30,6 @@
     with found = 0
     with current = '(("start"))
     with small = (get-small input)
-    while (not (atom current))
     while current
     for this = (pop current)
     do (loop for cave in (gethash (first this) input)
