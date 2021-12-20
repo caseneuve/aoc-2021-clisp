@@ -10,13 +10,13 @@
        (first bins)
        (make-array (list (length image) (length (first image))) :initial-contents image)))))
 
-(defun combine (x y mx my input turn)
+(defun combine (x y mx my image turn)
   (loop
     with decimal = 0
     for yy from (1- y) to (1+ y)
     do (loop for xx from (1- x) to (1+ x)
              for pxl = (if (and (< -1 yy my) (< -1 xx mx))
-                           (aref input yy xx)
+                           (aref image yy xx)
                            (mod turn 2)) ; that was tricky! (the image is infinite and 'outside' pixels flip each turn
              do (setf decimal (+ pxl (* 2 decimal))))
              finally (return decimal)))
