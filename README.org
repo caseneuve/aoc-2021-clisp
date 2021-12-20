@@ -18,19 +18,21 @@ The code in =dayNN.lisp= files is written with assumption that it's being evalua
 
 * Solutions
 
-| puzzle | notes                                                   |
-|--------+---------------------------------------------------------|
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/01.lisp][Day 1]]  | =reduce= (would be better with =loop=)                      |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/02.lisp][Day 2]]  | loop with accumulating values                           |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/03.lisp][Day 3]]  | rotating a list and recursion                           |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/04.lisp][Day 4]]  | using helpers from day 3 + parsing input (partition-by) |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/05.lisp][Day 5]]  | grid (hashmap)                                          |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/06.lisp][Day 6]]  | more thinking than writing                              |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/07.lisp][Day 7]]  | iteration + arithmetic                                  |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/08.lisp][Day 8]]  | sets                                                    |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/09.lisp][Day 9]]  | maze: flood-fill algo, =flet= & =labels=                    |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/10.lisp][Day 10]] | queueing                                                |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/11.lisp][Day 11]] | cf. day 9 (improved with hashmap and =#'coordinates=)     |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/12.lisp][Day 12]] | heap-heap-hoorray!                                      |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/13.lisp][Day 13]] | grid                                                    |
-| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/14.lisp][Day 14]] | hash-tables, no brutes!                                 |
+| puzzle     | notes                                                   |
+|------------+---------------------------------------------------------|
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/01.lisp][Day 1]]      | =reduce= (would be better with =loop=)                      |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/02.lisp][Day 2]]      | loop with accumulating values                           |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/03.lisp][Day 3]]      | rotating a list and recursion                           |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/04.lisp][Day 4]]      | using helpers from day 3 + parsing input (partition-by) |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/05.lisp][Day 5]]      | grid (hashmap)                                          |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/06.lisp][Day 6]]      | more thinking than writing                              |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/07.lisp][Day 7]]      | iteration + arithmetic                                  |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/08.lisp][Day 8]]      | sets                                                    |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/09.lisp][Day 9]]      | maze: flood-fill algo, =flet= & =labels=                    |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/10.lisp][Day 10]]     | queueing                                                |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/11.lisp][Day 11]]     | cf. day 9 (improved with hashmap and =#'coordinates=)     |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/12.lisp][Day 12]]     | heap-heap-hoorray!                                      |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/13.lisp][Day 13]]     | grid                                                    |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/14.lisp][Day 14]]     | hash-tables, no brutes!                                 |
+| Days 15-19 | todo                                                    |
+| [[https://gitlab.com/pkaznowski/aoc-2021-clisp/-/blob/master/20.lisp][Day 20]]     | tricky spec, otherwise cool (arrays)                    |
